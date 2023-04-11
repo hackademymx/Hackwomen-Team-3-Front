@@ -1,14 +1,14 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Routes,Route } from "react-router-dom";
 import "./App.css";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import Componente from "./components/Component";
+import FormSecurePlace from "./components/FormSecurePlace/FormSecurePlace";
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Hola, mundo!</h1>
-      <FontAwesomeIcon icon={faGlobe} />
-      <Componente />
+      <Routes>
+        <Route path="/" element={<FormSecurePlace/>}/>
+      </Routes>
     </div>
   );
 }
