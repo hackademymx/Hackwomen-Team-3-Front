@@ -140,6 +140,7 @@ export default function FormSecurePlace(){
                     label="Nombre" 
                     name="name"
                     variant="outlined"
+                    color="secondary"
                     onChange={handleChange}
                 />
                 <TextFieldFormSecurePlace 
@@ -153,6 +154,9 @@ export default function FormSecurePlace(){
                     label="Descripción" 
                     name="description"
                     variant="outlined"
+                    color="secondary"
+                    multiline
+                    rows={4}
                     onChange={handleChange}
                 />
                 <TextFieldFormSecurePlace 
@@ -166,6 +170,7 @@ export default function FormSecurePlace(){
                     label="Estado" 
                     name="state"
                     variant="outlined"
+                    color="secondary"
                     onChange={handleChange}
                 />
                 <TextFieldFormSecurePlace 
@@ -179,6 +184,7 @@ export default function FormSecurePlace(){
                     label="Ciudad" 
                     name="city"
                     variant="outlined"
+                    color="secondary"
                     onChange={handleChange}
                 />
                 <TextFieldFormSecurePlace 
@@ -192,6 +198,7 @@ export default function FormSecurePlace(){
                     label="Colonia" 
                     name="suburb"
                     variant="outlined"
+                    color="secondary"
                     onChange={handleChange}
                 />
                 <TextFieldFormSecurePlace 
@@ -205,6 +212,7 @@ export default function FormSecurePlace(){
                     label="Calle" 
                     name="street"
                     variant="outlined"
+                    color="secondary"
                     onChange={handleChange}
                 />
                 <TextFieldFormSecurePlace 
@@ -218,12 +226,12 @@ export default function FormSecurePlace(){
                     label="Código Postal" 
                     name="zipcode"
                     variant="outlined"
+                    color="secondary"
                     onChange={handleChange}
                 />
                 <ButtonFormSecurePlace 
                     type="submit" 
-                    variant="outlined" 
-                    color="secondary"
+                    variant="contained" 
                     disabled={Loading}
                     >
                        {Loading?"DATOS ENVIADOS":"ENVIAR DATOS"}
