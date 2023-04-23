@@ -1,0 +1,136 @@
+.list-container{
+  text-align: left;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 0px;
+    /* height: 40px; */
+  
+  }
+  
+
+  .row::after {
+    content: "";
+    display: table;
+    clear: both;
+    border-bottom: 1px solid #C00;
+  }
+
+  .item-row {
+    content: "";
+    display: flex;
+    clear: both;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .item-column {
+    float: left;
+    width: 25%;
+    padding: 0px;
+    /* height: 40px; */
+  }
+
+  .item-image-column {
+    width: 185px;
+    height: 150px;
+    background-color: #FAE8FF;
+    border-radius: 5px;
+  }
+
+  .item-desc-column {
+    width: 60%;
+    height: 150px;
+    width: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .item-menu-column {
+    width: 75px;
+    height: 150px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .header-row {
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 40px;
+    border: 2px solid rgba(33, 33, 33, 0.08);
+    text-align: center;
+  }
+
+  .header-column {
+    float: left;
+    width: 25%;
+    padding: 0px;
+    height: 40px;
+  }
+
+  .location-icon{
+    vertical-align: sub;
+  }
+
+  .btn-option{
+    color: #756CD7;
+    cursor: pointer;
+  }
+
+  .text-option{
+    margin: 0px;
+    font-size: 12px;
+  }
+
+  .btn-location{
+    color: #2216a6;
+    height: 33%;
+  }
+
+  .ml-10{
+   margin: 0px 0px 0px 10px;
+  }
+
+  .dp-inline-block{
+    display: inline-block;
+  }
+
+  .item-creation-cnt{
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    text-align: center;
+  }
+
+  .item-creator-label{
+    color: #6E33F4;
+  }
+
+  .flex-auto{
+    flex: auto;
+  }
+
+  .border-left{
+    border-left: solid #9CA3AF;
+  }
+
+  .m-0{
+    margin: 0px;
+  }
+
+  .cancel-icon{
+    color: #da0f0f;
+    vertical-align: sub;
+  }
+  
+  
