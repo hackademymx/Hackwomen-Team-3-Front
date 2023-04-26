@@ -1,11 +1,13 @@
 import { styled } from "@mui/material/styles";
 import { Button, TextField } from "@mui/material";
 
+
 export const DivFormSecurePlace=styled("div")({
     color: '#3b0764',
     display:"flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    background: '#FFFFFF'
 });
 
 export const FormFormSecurePlace=styled("form")({

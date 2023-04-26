@@ -10,26 +10,36 @@ export default function FormSecurePlace(){
     const [form,setForm]=useState({
         name:"",
         description:"",
-        state:"",
-        city:"",
-        suburb:"",
-        street:"",
-        zipcode: "",
+        address_country:"", 
+        address_state:"",
+        address_city:"",
+        address_colonia:"",
+        address_street:"",
+        address_zipcode: "",
     }); 
     const [formError,setFormError]=useState({
         name: { error: false, message: "" },
         description: { error: false, message: "" },
-        state: { error: false, message: "" },
-        city: { error: false, message: "" },
-        suburb: { error: false, message: "" },
-        street: { error: false, message: "" },
-        zipcode: { error: false, message: "" },
+        address_country: { error: false, message: "" },
+        address_state: { error: false, message: "" },
+        address_city: { error: false, message: "" },
+        address_colonia: { error: false, message: "" },
+        address_street: { error: false, message: "" },
+        address_zipcode: { error: false, message: "" },
     });
     const [Loading, setLoading]=useState(false);
 
     const handleComprove=() => {
         const regExpNumber=/^\d{1,6}$/
-        const { name, description, state, city, suburb, street, zipcode} = form;
+        const { name, 
+                description, // eslint-disable-next-line
+                address_country, // eslint-disable-next-line
+                address_state, // eslint-disable-next-line
+                address_city, // eslint-disable-next-line
+                address_colonia, // eslint-disable-next-line
+                address_street, // eslint-disable-next-line
+                address_zipcode // eslint-disable-next-line
+            } = form;
         const internalForm={...formError};
         let isCorrect = true;
 
@@ -51,52 +61,63 @@ export default function FormSecurePlace(){
             internalForm.description.message="";
         }
 
-        if (state === "") {
-            internalForm.state.error=true;
-            internalForm.state.message="Completa el campo";
+        // eslint-disable-next-line
+        if (address_country === "") {
+            internalForm.address_country.error=true;
+            internalForm.address_country.message="Completa el campo";
             isCorrect = false;
         }else{
-            internalForm.state.error=false;
-            internalForm.state.message="";
+            internalForm.address_country.error=false;
+            internalForm.address_country.message="";
         }
 
-        if (city === "") {
-            internalForm.city.error=true;
-            internalForm.city.message="Completa el campo";
+        // eslint-disable-next-line
+        if (address_state === "") {
+            internalForm.address_state.error=true;
+            internalForm.address_state.message="Completa el campo";
             isCorrect = false;
         }else{
-            internalForm.city.error=false;
-            internalForm.city.message="";
+            internalForm.address_state.error=false;
+            internalForm.address_state.message="";
         }
-
-        if (suburb === "") {
-            internalForm.suburb.error=true;
-            internalForm.suburb.message="Completa el campo";
+        // eslint-disable-next-line
+        if (address_city === "") {
+            internalForm.address_city.error=true;
+            internalForm.address_city.message="Completa el campo";
             isCorrect = false;
         }else{
-            internalForm.suburb.error=false;
-            internalForm.suburb.message="";
+            internalForm.address_city.error=false;
+            internalForm.address_city.message="";
         }
-
-        if (street === "") {
-            internalForm.street.error=true;
-            internalForm.street.message="Completa el campo";
+        // eslint-disable-next-line
+        if (address_colonia === "") {
+            internalForm.address_colonia.error=true;
+            internalForm.address_colonia.message="Completa el campo";
             isCorrect = false;
         }else{
-            internalForm.street.error=false;
-            internalForm.street.message="";
+            internalForm.address_colonia.error=false;
+            internalForm.address_colonia.message="";
         }
-
-        if (zipcode === "") {
-            internalForm.zipcode.error=true;
-            internalForm.zipcode.message="Completa el campo";
+        // eslint-disable-next-line
+        if (address_street === "") {
+            internalForm.address_street.error=true;
+            internalForm.address_street.message="Completa el campo";
             isCorrect = false;
-        }else if(!regExpNumber.test(zipcode)){
-            internalForm.zipcode.error=true;
-            internalForm.zipcode.message="Usa unicamente dígitos";  
         }else{
-            internalForm.zipcode.error=false;
-            internalForm.zipcode.message="";
+            internalForm.address_street.error=false;
+            internalForm.address_street.message="";
+        }
+        // eslint-disable-next-line
+        if (address_zipcode === "") {
+            internalForm.address_zipcode.error=true;
+            internalForm.address_zipcode.message="Completa el campo";
+            isCorrect = false;
+        }else if(!regExpNumber.test(address_zipcode)){
+            internalForm.address_zipcode.error=true;
+            internalForm.address_zipcode.message="Usa unicamente dígitos";  
+        }else{
+            internalForm.address_zipcode.error=false;
+            internalForm.address_zipcode.message="";
         }
 
         setFormError(internalForm);
@@ -159,72 +180,88 @@ export default function FormSecurePlace(){
                     rows={4}
                     onChange={handleChange}
                 />
+
                 <TextFieldFormSecurePlace 
-                    error={formError.state.error}
-                    helperText={formError.state.error&&formError.state.message}
+                    error={formError.address_country.error}
+                    helperText={formError.address_country.error&&formError.address_country.message}
                     id={
-                        formError.state.error
+                        formError.address_country.error
+                        ?"outlined-error-helper-text"
+                        :"outlined-basic"
+                    }
+                    label="País" 
+                    name="address_country"
+                    variant="outlined"
+                    color="secondary"
+                    onChange={handleChange}
+                />
+
+                <TextFieldFormSecurePlace 
+                    error={formError.address_state.error}
+                    helperText={formError.address_state.error&&formError.address_state.message}
+                    id={
+                        formError.address_state.error
                         ?"outlined-error-helper-text"
                         :"outlined-basic"
                     }
                     label="Estado" 
-                    name="state"
+                    name="address_state"
                     variant="outlined"
                     color="secondary"
                     onChange={handleChange}
                 />
                 <TextFieldFormSecurePlace 
-                    error={formError.city.error}
-                    helperText={formError.city.error&&formError.city.message}
+                    error={formError.address_city.error}
+                    helperText={formError.address_city.error&&formError.address_city.message}
                     id={
-                        formError.city.error
+                        formError.address_city.error
                         ?"outlined-error-helper-text"
                         :"outlined-basic"
                     }
                     label="Ciudad" 
-                    name="city"
+                    name="address_city"
                     variant="outlined"
                     color="secondary"
                     onChange={handleChange}
                 />
                 <TextFieldFormSecurePlace 
-                    error={formError.suburb.error}
-                    helperText={formError.suburb.error&&formError.suburb.message}
+                    error={formError.address_colonia.error}
+                    helperText={formError.address_colonia.error&&formError.address_colonia.message}
                     id={
-                        formError.suburb.error
+                        formError.address_colonia.error
                         ?"outlined-error-helper-text"
                         :"outlined-basic"
                     }
                     label="Colonia" 
-                    name="suburb"
+                    name="address_colonia"
                     variant="outlined"
                     color="secondary"
                     onChange={handleChange}
                 />
                 <TextFieldFormSecurePlace 
-                    error={formError.street.error}
-                    helperText={formError.street.error&&formError.street.message}
+                    error={formError.address_street.error}
+                    helperText={formError.address_street.error&&formError.address_street.message}
                     id={
-                        formError.street.error
+                        formError.address_street.error
                         ?"outlined-error-helper-text"
                         :"outlined-basic"
                     }
                     label="Calle" 
-                    name="street"
+                    name="address_street"
                     variant="outlined"
                     color="secondary"
                     onChange={handleChange}
                 />
                 <TextFieldFormSecurePlace 
-                    error={formError.zipcode.error}
-                    helperText={formError.zipcode.error&&formError.zipcode.message}
+                    error={formError.address_zipcode.error}
+                    helperText={formError.address_zipcode.error&&formError.address_zipcode.message}
                     id={
-                        formError.zipcode.error
+                        formError.address_zipcode.error
                         ?"outlined-error-helper-text"
                         :"outlined-basic"
                     }
                     label="Código Postal" 
-                    name="zipcode"
+                    name="address_zipcode"
                     variant="outlined"
                     color="secondary"
                     onChange={handleChange}
