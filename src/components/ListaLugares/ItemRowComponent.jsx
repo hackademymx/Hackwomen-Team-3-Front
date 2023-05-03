@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
 import React from 'react';
 import Brightness1Icon from '@mui/icons-material/Brightness1'; 
 import LocationOnIcon from '@mui/icons-material/LocationOn'; 
@@ -36,12 +36,12 @@ export default function ItemRowComponent({place}) {
                 <p className='ml-10'>Descripción: {place.description}</p>
                 <div className='btn-location ml-10'>
                     <LocationOnIcon className='dp-inline-block location-icon'/>    
-                    <p className='btn-location dp-inline-block'> {`${place.address.state}, ${place.address.city}`}</p>
+                    <p className='btn-location dp-inline-block'> {`${place.address_state}, ${place.address_city}`}</p>
                 </div>
             </div>
             <div className="item-menu-column" >
                 <div className='btn-option'>
-                    <StarIcon />
+                    <StarIcon/>
                     <p className='text-option'>Me Gusta</p>
                 </div>
                 <div className='btn-option'>
@@ -52,11 +52,18 @@ export default function ItemRowComponent({place}) {
                     <CancelTwoToneIcon className='cancel-icon'/>
                     <p className='text-option'>Eliminar</p>
                 </div>
+
             </div>
         </div>
     )
 }
 
-ItemRowComponent.propTypes={
-    place:PropTypes.shape([]).isRequired,
-}
+ItemRowComponent.propTypes = {
+    place:PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string,
+        address_state: PropTypes.string,
+        address_city: PropTypes.string
+    }).isRequired,
+    // showModal: PropTypes.func.isRequired,
+};
