@@ -1,4 +1,7 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
+import { addPlace } from "../../api/places";
+import Notification from "../Notification/Notification";
 import {
     DivFormSecurePlace, 
     FormFormSecurePlace, 
@@ -7,6 +10,8 @@ import {
 } from "./FormSecurePlaceStyles"
 
 export default function FormSecurePlace(){
+    const navigate=useNavigate();
+    
     const [form,setForm]=useState({
         name:"",
         description:"",
@@ -28,6 +33,11 @@ export default function FormSecurePlace(){
         address_zipcode: { error: false, message: "" },
     });
     const [Loading, setLoading]=useState(false);
+    const [notification, setNotification]=useState({
+        open:false,
+        message: "",
+        severity: "",
+    })
 
     const handleComprove=() => {
         const regExpNumber=/^\d{1,6}$/
@@ -124,12 +134,26 @@ export default function FormSecurePlace(){
         return isCorrect;
     };
 
-    const handleSubmit= (e) => { // Cuando enviamos formulario
+    const handleSubmit= async(e) => { // Cuando enviamos formulario
         e.preventDefault();
         setLoading(true);
         const allFine=handleComprove();
         if(allFine){
-            console.log("Enviando datos...");
+            // console.log("Enviando datos...");
+            const response= await addPlace(form)
+            console.log(response);
+
+            if(response.status!==200){
+                setNotification({
+                    open:true,
+                    message: "Ocurrió un error",
+                    severity: "error",
+                });
+                setLoading(false);
+                return;
+            }
+
+            navigate("/listaLugares", { replace:true })
         }
         setLoading(false);
         // console.log(form);
@@ -148,6 +172,12 @@ export default function FormSecurePlace(){
 
     return (
         <DivFormSecurePlace>
+            {notification.open && (
+            <Notification
+                notification={notification} 
+                setNotification={setNotification}
+            />
+        )}
             <FormFormSecurePlace onSubmit={handleSubmit}> 
                 <h1>Lugares Seguros</h1>
                 <TextFieldFormSecurePlace 
@@ -271,7 +301,7 @@ export default function FormSecurePlace(){
                     variant="contained" 
                     disabled={Loading}
                     >
-                       {Loading?"DATOS ENVIADOS":"ENVIAR DATOS"}
+                    {Loading?"DATOS ENVIADOS":"ENVIAR DATOS"}
                     </ButtonFormSecurePlace>
             </FormFormSecurePlace>
         </DivFormSecurePlace>

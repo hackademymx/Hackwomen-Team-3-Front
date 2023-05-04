@@ -7,7 +7,7 @@ export default function Notification(props){
     const closeNotification=() => setNotification({
         open:false,
         message: "",
-        severity: ""
+        severity: "",
         })
 
     return(<Snackbar
