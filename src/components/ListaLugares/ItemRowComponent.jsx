@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import PropTypes from "prop-types"
 import React from 'react';
 import Brightness1Icon from '@mui/icons-material/Brightness1'; 
@@ -12,7 +13,7 @@ export default function ItemRowComponent({place}) {
         /* name: "Cafe Starbucks",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industri. Lorem ipsum has been the industry’s standars dummy text ever since the 1500s", */
 
-        createdBy: "Rosario V",
+        createdBy: "Usuario",
         creationDate: "6 Marzo 2023",
         likes: 57,
         /* address: "Av. Velarde, Santa Cruz de la Sierra" */
@@ -21,7 +22,7 @@ export default function ItemRowComponent({place}) {
     return (
         <div className='item-row'>
             <div className="item-image-column" >
-                <h2>Image</h2>
+                <img src={place.image} alt={place.name} />
             </div>
             <div className="item-desc-column" >
                 <h2 className='ml-10'>{place.name}</h2>

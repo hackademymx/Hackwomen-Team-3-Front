@@ -10,7 +10,7 @@ import {
 } from "./FormSecurePlaceStyles"
 
 export default function FormSecurePlace(){
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     
     const [form,setForm]=useState({
         name:"",
@@ -37,7 +37,7 @@ export default function FormSecurePlace(){
         open:false,
         message: "",
         severity: "",
-    })
+    });
 
     const handleComprove=() => {
         const regExpNumber=/^\d{1,6}$/
@@ -134,16 +134,16 @@ export default function FormSecurePlace(){
         return isCorrect;
     };
 
-    const handleSubmit= async(e) => { // Cuando enviamos formulario
+    const handleSubmit = async(e) => { // Cuando enviamos formulario
         e.preventDefault();
         setLoading(true);
         const allFine=handleComprove();
         if(allFine){
             // console.log("Enviando datos...");
-            const response= await addPlace(form)
+            const response = await addPlace(form)
             console.log(response);
 
-            if(response.status!==200){
+            if(response.status!==201){
                 setNotification({
                     open:true,
                     message: "Ocurrió un error",
@@ -153,7 +153,7 @@ export default function FormSecurePlace(){
                 return;
             }
 
-            navigate("/listaLugares", { replace:true })
+            navigate("/listaLugares", { replace:true });
         }
         setLoading(false);
         // console.log(form);
@@ -182,7 +182,7 @@ export default function FormSecurePlace(){
                 <h1>Lugares Seguros</h1>
                 <TextFieldFormSecurePlace 
                     error={formError.name.error}
-                    helperText={formError.name.error&&formError.name.message}
+                    helperText={formError.name.error && formError.name.message}
                     id={
                         formError.name.error
                         ?"outlined-error-helper-text"
@@ -228,7 +228,7 @@ export default function FormSecurePlace(){
 
                 <TextFieldFormSecurePlace 
                     error={formError.address_state.error}
-                    helperText={formError.address_state.error&&formError.address_state.message}
+                    helperText={formError.address_state.error && formError.address_state.message}
                     id={
                         formError.address_state.error
                         ?"outlined-error-helper-text"
@@ -242,7 +242,7 @@ export default function FormSecurePlace(){
                 />
                 <TextFieldFormSecurePlace 
                     error={formError.address_city.error}
-                    helperText={formError.address_city.error&&formError.address_city.message}
+                    helperText={formError.address_city.error && formError.address_city.message}
                     id={
                         formError.address_city.error
                         ?"outlined-error-helper-text"
